@@ -139,9 +139,9 @@ widgets:
         # Author's current location
         location: BeiJing
         # URL or path to the avatar image
-        avatar: 
+        avatar: 'https://avatars.githubusercontent.com/u/3062921?s=400&u=3543ec890bfdd459d1f5cab3ce24eeed892a9a8d&v=4'
         # Whether show the rounded avatar image
-        avatar_rounded: false
+        avatar_rounded: true
         # Email address for the Gravatar
         gravatar: 
         # URL or path for the follow button
