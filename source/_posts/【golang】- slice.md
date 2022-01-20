@@ -41,7 +41,7 @@ func TestSliceNew(t *testing.T) {
 	//No.4
 	// new 函数返回是指针类型，所以需要使用 * 号来解引用
 	s4 := *new([]int)
-	fmt.Printf("len is %d, cap is %d , is nil %t\n", len(s3), cap(s3), s4 == nil)
+	fmt.Printf("len is %d, cap is %d , is nil %t\n", len(s4), cap(s4), s4 == nil)
 }
 
 === RUN   TestSliceNew
@@ -55,7 +55,7 @@ PASS
 ``` 
 总共常用的是3中方式，其中第三种，第四种就不要用了，这里有2中类型，1个叫"nil切片",1个叫"empty切片"，官方推荐使用nil切片，也就是`var s []int`这种方式
 
-    The former declares a nil slice value, while the latter is non-nil but zero-length. They are functionally equivalent—their len and cap are both zero—but the nil slice is the preferred style.
+> The former declares a nil slice value, while the latter is non-nil but zero-length. They are functionally equivalent—their len and cap are both zero—but the nil slice is the preferred style.
 
 那么这两种有什么区别呢？其实很简单，empty切片在创建时，都会使用同一内存地址来标识，`runtime/malloc.go`下边就这么写的
 
@@ -210,11 +210,11 @@ PASS
 
 首先这里先直接说结论，`go中没有引用传递，只有值传递` https://golang.org/ref/spec#Calls
 
-    In a function call, the function value and arguments are evaluated in the usual order. After they are evaluated, the parameters of the call are passed by value to the function and the called function begins execution. The return parameters of the function are passed by value back to the caller when the function returns.
+> In a function call, the function value and arguments are evaluated in the usual order. After they are evaluated, the parameters of the call are passed by value to the function and the called function begins execution. The return parameters of the function are passed by value back to the caller when the function returns.
 
 那么在go中有3个数据结构是特殊的，那就是`map、slice、chan`他们的类型叫做`reference types`,他们是"引用类型"，但在函数传递过程中，并不是"引用类型"，这块之前比较迷茫，现在就清晰了
 
-    Map types are reference types, like pointers or slices, and so the value of m above is nil; it doesn't point to an initialized map. A nil map behaves like an empty map when reading, but attempts to write to a nil map will cause a runtime panic; don't do that. To initialize a map, use the built in make function:
+> Map types are reference types, like pointers or slices, and so the value of m above is nil; it doesn't point to an initialized map. A nil map behaves like an empty map when reading, but attempts to write to a nil map will cause a runtime panic; don't do that. To initialize a map, use the built in make function:
 
 https://blog.golang.org/maps
 
